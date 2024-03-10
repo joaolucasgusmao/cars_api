@@ -8,7 +8,10 @@ export class CarService {
   };
 
   public read = async (): Promise<Array<CarReturn>> => {
-    return carSchema.array().parse(await prisma.cars.findMany({}));
+    return carSchema
+      .array()
+      .parse(await prisma.cars.findMany({}))
+      .sort((a, b) => a.id - b.id);
   };
 
   public retrieve = async (carId: number): Promise<CarReturn> => {
