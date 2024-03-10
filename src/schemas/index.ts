@@ -1,4 +1,4 @@
 import { baseSchema } from "./base.schema";
-import { carSchema, createCarSchema } from "./cars.schemas";
+import { carSchema, createCarSchema, updateCarSchema } from "./cars.schemas";
 
-export { baseSchema, carSchema, createCarSchema };
+export { baseSchema, carSchema, createCarSchema, updateCarSchema };

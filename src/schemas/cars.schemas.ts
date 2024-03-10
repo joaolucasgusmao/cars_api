@@ -10,9 +10,6 @@ const carSchema = baseSchema.extend({
 });
 
 const createCarSchema = carSchema.omit({ id: true });
+const updateCarSchema = carSchema.omit({ id: true }).partial();
 
-export {
-  baseSchema,
-  carSchema,
-  createCarSchema,
-};
+export { carSchema, createCarSchema, updateCarSchema };
