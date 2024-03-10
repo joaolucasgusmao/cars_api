@@ -15,6 +15,8 @@ export class EnsureMiddleware {
     });
 
     if (!carFound) throw new AppError("Car not found.", 404);
+
+    return next();
   };
 }
 
