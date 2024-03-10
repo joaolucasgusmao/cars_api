@@ -1,14 +1,14 @@
 import { prisma } from "../database/prisma";
-import { CarReturn, CreateCar, GetCarReturn, UpdateCar } from "../interfaces";
-import { carSchema, returnCarSchema } from "../schemas";
+import { CarReturn, CreateCar, UpdateCar } from "../interfaces";
+import { carSchema } from "../schemas";
 
 export class CarService {
   public create = async (payLoad: CreateCar): Promise<CarReturn> => {
     return carSchema.parse(await prisma.cars.create({ data: payLoad }));
   };
 
-  public read = async (): Promise<Array<GetCarReturn>> => {
-    return returnCarSchema.array().parse(await prisma.cars.findMany());
+  public read = async (): Promise<Array<CarReturn>> => {
+    return carSchema.array().parse(await prisma.cars.findMany({}));
   };
 
   public retrieve = async (carId: number): Promise<CarReturn> => {

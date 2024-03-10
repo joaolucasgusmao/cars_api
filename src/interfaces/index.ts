@@ -1,8 +1,3 @@
-import {
-  CarReturn,
-  CreateCar,
-  GetCarReturn,
-  UpdateCar,
-} from "./cars.interfaces";
+import { CarReturn, CreateCar, UpdateCar } from "./cars.interfaces";
 
-export { CarReturn, CreateCar, GetCarReturn, UpdateCar };
+export { CarReturn, CreateCar, UpdateCar };
