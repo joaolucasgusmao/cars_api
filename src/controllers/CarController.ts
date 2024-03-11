@@ -21,9 +21,7 @@ export class CarController {
     { params }: Request,
     res: Response
   ): Promise<Response> => {
-    return res
-      .status(200)
-      .json(await this.carService.retrieve(Number(params.carId)));
+    return res.status(200).json(await this.carService.retrieve(params.carId));
   };
 
   public update = async (
@@ -32,14 +30,14 @@ export class CarController {
   ): Promise<Response> => {
     return res
       .status(200)
-      .json(await this.carService.update(body, Number(params.carId)));
+      .json(await this.carService.update(body, params.carId));
   };
 
   public delete = async (
     { params }: Request,
     res: Response
   ): Promise<Response> => {
-    await this.carService.delete(Number(params.carId));
+    await this.carService.delete(params.carId);
     return res.status(204).json();
   };
 }

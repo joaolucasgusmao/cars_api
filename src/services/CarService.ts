@@ -10,13 +10,10 @@ export class CarService {
   };
 
   public read = async (): Promise<Array<CarReturn>> => {
-    return carSchema
-      .array()
-      .parse(await prisma.cars.findMany({}))
-      .sort((a, b) => a.id - b.id);
+    return carSchema.array().parse(await prisma.cars.findMany({}));
   };
 
-  public retrieve = async (carId: number): Promise<CarReturn> => {
+  public retrieve = async (carId: string): Promise<CarReturn> => {
     return carSchema.parse(
       await prisma.cars.findFirst({ where: { id: carId } })
     );
@@ -24,14 +21,14 @@ export class CarService {
 
   public update = async (
     payLoad: UpdateCar,
-    carId: number
+    carId: string
   ): Promise<CarReturn> => {
     return carSchema.parse(
       await prisma.cars.update({ where: { id: carId }, data: payLoad })
     );
   };
 
-  public delete = async (carId: number): Promise<void> => {
+  public delete = async (carId: string): Promise<void> => {
     await prisma.cars.delete({ where: { id: carId } });
   };
 }

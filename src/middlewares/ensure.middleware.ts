@@ -24,7 +24,7 @@ export class EnsureMiddleware {
     const { carId } = params;
 
     const carFound = await prisma.cars.findFirst({
-      where: { id: Number(carId) },
+      where: { id: carId },
     });
 
     if (!carFound) throw new AppError("Car not found.", 404);
