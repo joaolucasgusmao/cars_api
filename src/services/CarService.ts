@@ -10,7 +10,7 @@ export class CarService {
   };
 
   public read = async (): Promise<Array<CarReturn>> => {
-    return carSchema.array().parse(await prisma.cars.findMany({}));
+    return carSchema.array().parse(await prisma.cars.findMany());
   };
 
   public retrieve = async (carId: string): Promise<CarReturn> => {

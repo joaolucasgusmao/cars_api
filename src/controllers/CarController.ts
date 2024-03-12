@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CarService } from "../services";
-import { container, inject, injectable } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 @injectable()
 export class CarController {

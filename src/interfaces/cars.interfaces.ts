@@ -1,12 +1,9 @@
 import { z } from "zod";
-import {
-  carSchema,
-  createCarSchema,
-} from "../schemas";
+import { carSchema, createCarSchema } from "../schemas";
 
 type CarReturn = z.infer<typeof carSchema>;
 type CreateCar = z.infer<typeof createCarSchema> & {
-  description: number | null;
+  description: string | null;
 };
 type UpdateCar = Partial<CreateCar>;
 
