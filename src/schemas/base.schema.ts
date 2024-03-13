@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const baseSchema = z.object({
-  id: z.number().positive(),
+  id: z.string().min(1)
 });
 
 export { baseSchema };
