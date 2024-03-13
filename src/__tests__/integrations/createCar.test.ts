@@ -1,6 +1,6 @@
 import { prisma } from "../../database/prisma";
 import { request } from "../utils";
-import { carMock, createCarMock } from "../__mocks__";
+import { carMock, createCarMock, invalidBodyMessageMock } from "../__mocks__";
 
 describe("Integration test: Create Car", () => {
   beforeEach(async () => {
@@ -20,5 +20,15 @@ describe("Integration test: Create Car", () => {
     expect(data.brand).toBe(carMock.brand);
     expect(data.year).toBe(carMock.year);
     expect(data.km).toBe(carMock.km);
+  });
+
+  test("Should not be able to create a car with invalid body.", async () => {
+    const data = await request
+      .post("/cars")
+      .send({})
+      .expect(400)
+      .then((response) => response.body);
+
+    expect(data).toEqual(invalidBodyMessageMock);
   });
 });

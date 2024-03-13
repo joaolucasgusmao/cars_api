@@ -1,5 +1,15 @@
 import { prisma } from "../../database/prisma";
-import { carMock, createCarMock, updateCarMock } from "../__mocks__";
+import {
+  carMock,
+  createCarMock,
+  invalidBodyMessageMock,
+  updateCarMock,
+} from "../__mocks__";
+import {
+  carNotFoundMessageMock,
+  invalidBodyUpdateMessageMock,
+  invalidBodyUpdateMock,
+} from "../__mocks__/errors.mocks";
 import { request } from "../utils";
 
 describe("Integration test: Update Car", () => {
@@ -22,5 +32,27 @@ describe("Integration test: Update Car", () => {
     expect(data.brand).toBe(carMock.brand);
     expect(data.year).toBe(carMock.year);
     expect(data.km).toBe(carMock.km);
+  });
+
+  test("Should not be able to update a car with invalid body.", async () => {
+    const newCar = await prisma.cars.create({ data: createCarMock });
+
+    const data = await request
+      .patch(`/cars/${newCar.id}`)
+      .send(invalidBodyUpdateMock)
+      .expect(400)
+      .then((response) => response.body);
+
+    expect(data).toEqual(invalidBodyUpdateMessageMock);
+  });
+
+  test("Should not be able to update a car with invalid id.", async () => {
+    const data = await request
+      .patch("/cars/invalidCarId")
+      .expect(404)
+      .send(updateCarMock)
+      .then((response) => response.body);
+
+    expect(data).toEqual(carNotFoundMessageMock);
   });
 });

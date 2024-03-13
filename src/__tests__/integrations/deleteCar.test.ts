@@ -1,5 +1,5 @@
 import { prisma } from "../../database/prisma";
-import { createCarMock } from "../__mocks__";
+import { carNotFoundMessageMock, createCarMock } from "../__mocks__";
 import { request } from "../utils";
 
 describe("Integration test: Delete Car", () => {
@@ -20,5 +20,14 @@ describe("Integration test: Delete Car", () => {
     const carExists = await prisma.cars.findFirst({ where: { id: newCar.id } });
 
     expect(carExists).toBeNull();
+  });
+
+  test("Should not be able to delete a car with invalid id.", async () => {
+    const data = await request
+      .delete("/cars/invalidId")
+      .expect(404)
+      .then((response) => response.body);
+
+    expect(data).toEqual(carNotFoundMessageMock);
   });
 });
