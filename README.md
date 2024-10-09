@@ -84,7 +84,6 @@ Para instalar e executar a API, siga os passos abaixo:
           "year": 1975,
           "km": 100000
       },
-      ...
   ]
   ```
 
@@ -167,3 +166,15 @@ Para instalar e executar a API, siga os passos abaixo:
     "message": "Car not found."
   }
   ```
+
+## Testes
+
+1. Certifique-se de que a API está rodando:
+ ```bash
+    $ npm run dev
+   ```
+2. Rodando os testes:
+    - Use o seguinte comando para iniciar os testes:
+```bash
+    $ npm run test
+   ```
