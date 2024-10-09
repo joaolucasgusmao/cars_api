@@ -37,18 +37,7 @@ Para instalar e executar a API, siga os passos abaixo:
    ```bash
     $ npm run dev
    ```
-
-## Model
-
-### Car
-
-- **id**: `String` (gerado automaticamente)
-- **name**: `String` (Nome do carro)
-- **description**: `String?` (Descrição do carro, opcional)
-- **brand**: `String` (Marca do carro)
-- **year**: `Int` (Ano de fabricação)
-- **km**: `Int` (Quilometragem)
-
+   
 ## Endpoints
 
 ### 1. `POST /cars`
