@@ -174,7 +174,6 @@ Para instalar e executar a API, siga os passos abaixo:
     $ npm run dev
    ```
 2. Rodando os testes:
-    - Use o seguinte comando para iniciar os testes:
 ```bash
     $ npm run test
    ```
