@@ -1,6 +1,6 @@
 # Cars API
 
-API desenvolvida com **Node.js e Express.js** para gerenciar informações de carros.
+API RESTful desenvolvida com **Node.js e Express.js** para gerenciar informações de carros.
 
 ## Tecnologias
 
