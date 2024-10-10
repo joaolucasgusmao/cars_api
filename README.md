@@ -8,6 +8,7 @@ API desenvolvida com **Node.js e Express.js** para gerenciar informações de ca
 - Express.js
 - TypeScript
 - Prisma (para interação com o banco de dados)
+- PostgreSQL
 
 ## Instalação
 
